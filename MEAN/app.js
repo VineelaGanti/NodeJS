@@ -2,9 +2,19 @@
 
 var app = angular.module('flapperNews', []);
 
+app.factory('posts', [function(){
+    // service body
+    var o = {
+        posts: []
+    };
+    return o;
+}])
+
+
 app.controller('MainCtrl', [
-    '$scope',
-    function($scope){
+    '$scope','posts',
+    function($scope, posts){
+        $scope.posts = posts.posts;
         $scope.test = 'Hello world!';
         $scope.posts = [
             {title: 'post 1', upvotes: 5},
